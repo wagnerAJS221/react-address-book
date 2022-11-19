@@ -7,13 +7,18 @@ import './styles/styles.css'
 
 export default function App() {
   const [contacts, setContacts] = useState([])
+  const [submit, setSubmit] = useState(false)
 
   useEffect(() => {
     fetch('http://localhost:4000/contacts')
       .then((res) => res.json())
       .then((data) => setContacts(data))
     console.log('Gimme the Data?')
-  }, [])
+  }, [submit])
+
+  const submitFalse = () => {
+    setSubmit(false)
+  }
 
   return (
     <>
@@ -21,10 +26,14 @@ export default function App() {
         <h2>Menu</h2>
         <ul>
           <li>
-            <Link to="/">Contacts List</Link>
+            <Link to="/" onClick={submitFalse}>
+              Contacts List{' '}
+            </Link>
           </li>
           <li>
-            <Link to=" /contacts/add">Add New Contact</Link>
+            <Link to="/contacts/add" onClick={submitFalse}>
+              Add New Contact
+            </Link>
           </li>
         </ul>
       </nav>
@@ -36,7 +45,13 @@ export default function App() {
               <ContactsList contacts={contacts} setContacts={setContacts} />
             }
           />
-          <Route path="/contacts/:id" element={ContactsView} />
+          <Route
+            path="/contacts/add"
+            element={ContactsView}
+            submit={submit}
+            setSubmit={setSubmit}
+          />
+          <Route path="/contacts/:id" element={<ContactsView />} />
         </Routes>
       </main>
     </>

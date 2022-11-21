@@ -16,24 +16,16 @@ export default function App() {
     console.log('Gimme the Data?')
   }, [submit])
 
-  const submitFalse = () => {
-    setSubmit(false)
-  }
-
   return (
     <>
       <nav>
         <h2>Menu</h2>
         <ul>
           <li>
-            <Link to="/" onClick={submitFalse}>
-              Contacts List{' '}
-            </Link>
+            <Link to="/">Contacts List </Link>
           </li>
           <li>
-            <Link to="/contacts/add" onClick={submitFalse}>
-              Add New Contact
-            </Link>
+            <Link to="/contacts/add">Add New Contact</Link>
           </li>
         </ul>
       </nav>
@@ -47,9 +39,9 @@ export default function App() {
           />
           <Route
             path="/contacts/add"
-            element={ContactsView}
-            submit={submit}
-            setSubmit={setSubmit}
+            element={
+              <ContactsAdd contacts={contacts} setContacts={setContacts} />
+            }
           />
           <Route path="/contacts/:id" element={<ContactsView />} />
         </Routes>

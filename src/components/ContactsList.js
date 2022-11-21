@@ -5,7 +5,7 @@ function ContactsList(props) {
   //"contacts" must be passed as prop to this component
 
   const { contacts } = props
-  console.log('This has rendered')
+  console.log('This is  rendering in contactList')
   return (
     <>
       <header>

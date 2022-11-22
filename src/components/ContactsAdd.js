@@ -6,7 +6,10 @@ function ContactsAdd(props) {
     firstName: '',
     lastName: '',
     street: '',
-    city: ''
+    city: '',
+    email: '',
+    linkedin: '',
+    twitter: ''
   }
   const { subtmit, setSubmit, setContacts, contacts } = props
   const [newContact, setNewContact] = useState(newContactForm)
@@ -24,6 +27,15 @@ function ContactsAdd(props) {
       setNewContact(latestContact)
     } else if (event.target.name === 'city') {
       const latestContact = { ...newContact, city: event.target.value }
+      setNewContact(latestContact)
+    } else if (event.target.name === 'email') {
+      const latestContact = { ...newContact, email: event.target.value }
+      setNewContact(latestContact)
+    } else if (event.target.name === 'linkedin') {
+      const latestContact = { ...newContact, linkedin: event.target.value }
+      setNewContact(latestContact)
+    } else if (event.target.name === 'twitter') {
+      const latestContact = { ...newContact, twitter: event.target.value }
       setNewContact(latestContact)
     }
   }
@@ -93,6 +105,33 @@ function ContactsAdd(props) {
         required
         onChange={handleNewForm}
         value={newContact.city}
+      />
+      <label htmlFor="email">Email:</label>
+      <input
+        id="email"
+        name="email"
+        type="text"
+        required
+        onChange={handleNewForm}
+        value={newContact.email}
+      />
+      <label htmlFor="linkedin">LinkedIn:</label>
+      <input
+        id="linkedin"
+        name="linkedin"
+        type="text"
+        required
+        onChange={handleNewForm}
+        value={newContact.linkedin}
+      />
+      <label htmlFor="twitter">Twitter:</label>
+      <input
+        id="twitter"
+        name="twitter"
+        type="text"
+        required
+        onChange={handleNewForm}
+        value={newContact.twitter}
       />
 
       <div className="actions-section">

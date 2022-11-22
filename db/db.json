@@ -13,6 +13,36 @@
       "lastName": "Hopper",
       "street": "32 Deebug Road",
       "city": "London"
+    },
+    {
+      "firstName": "Alex",
+      "lastName": "Wagner",
+      "street": "8 Mertoun Place, Merchiston, Edinburgh",
+      "city": "edinburgh",
+      "email": "wagneralex221@gmail.com",
+      "linkedin": "Ajsw",
+      "twitter": "@alex",
+      "id": 3
+    },
+    {
+      "firstName": "Alex",
+      "lastName": "Wagner",
+      "street": "8 Mertoun Place, Merchiston, Edinburgh",
+      "city": "edinburgh",
+      "email": "wagneralex221@gmail.com",
+      "linkedin": "Ajsw",
+      "twitter": "@alex",
+      "id": 4
+    },
+    {
+      "firstName": "Alex",
+      "lastName": "Wagner",
+      "street": "8 Mertoun Place, Merchiston, Edinburgh",
+      "city": "edinburgh",
+      "email": "wagneralex221@gmail.com",
+      "linkedin": "Ajsw",
+      "twitter": "@alex",
+      "id": 5
     }
   ]
 }

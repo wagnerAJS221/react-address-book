@@ -3,29 +3,29 @@ import { useNavigate } from 'react-router-dom'
 
 function ContactsAdd(props) {
   const newContactForm = {
-    firstname: '',
-    lastname: '',
+    firstName: '',
+    lastName: '',
     street: '',
     city: ''
   }
-  const { setContacts, contacts, subtmit, setSubmit } = props
+  const { subtmit, setSubmit, setContacts, contacts } = props
   const [newContact, setNewContact] = useState(newContactForm)
 
   const handleNewForm = (event) => {
-    if (event.target.name === 'firstname') {
-      const latestContact = { ...newContact, firstname: event.target.value }
+    console.log(event.target.name, event.target.value)
+    if (event.target.name === 'firstName') {
+      const latestContact = { ...newContact, firstName: event.target.value }
       setNewContact(latestContact)
-    } else if (event.target.name === 'lastname') {
-      const latestContact = { ...newContact, firstname: event.target.value }
+    } else if (event.target.name === 'lastName') {
+      const latestContact = { ...newContact, lastName: event.target.value }
       setNewContact(latestContact)
     } else if (event.target.name === 'street') {
-      const latestContact = { ...newContact, firstname: event.target.value }
+      const latestContact = { ...newContact, street: event.target.value }
       setNewContact(latestContact)
     } else if (event.target.name === 'city') {
-      const latestContact = { ...newContact, firstname: event.target.value }
+      const latestContact = { ...newContact, city: event.target.value }
       setNewContact(latestContact)
     }
-    console.log('new contact if and elses')
   }
 
   const formSubmit = (event) => {
@@ -36,20 +36,23 @@ function ContactsAdd(props) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        firstname: newContactForm.firstname,
-        lastname: newContact.lastname,
-        street: newContact.street,
-        city: newContact.city
+        ...newContact
       })
     })
-    const updatedContactList = [...contacts, newContact]
-    setNewContact(updatedContactList)
-    setNewContact(newContactForm)
-    setSubmit(true)
+      .then((res) => res.json())
+      .then((newContact) => {
+        setContacts([...contacts, newContact])
+      })
+    // console.log the data that i get back from the fetch
+    // console.log(newContact)
+
+    // setNewContact(newContactForm)
+    // setSubmit(true)
+    console.log(contacts)
   }
 
   return (
-    <form className="form-stack contact-form">
+    <form className="form-stack contact-form" onSubmit={formSubmit}>
       <h2>Create Contact</h2>
 
       <label htmlFor="firstName">First Name</label>
@@ -59,7 +62,7 @@ function ContactsAdd(props) {
         type="text"
         required
         onChange={handleNewForm}
-        value={newContact.firstname}
+        value={newContact.firstName}
       />
 
       <label htmlFor="lastName">Last Name:</label>
@@ -69,7 +72,7 @@ function ContactsAdd(props) {
         type="text"
         required
         onChange={handleNewForm}
-        value={newContact.lastname}
+        value={newContact.lastName}
       />
 
       <label htmlFor="street">Street:</label>
